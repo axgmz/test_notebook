@@ -9,7 +9,8 @@
             "rcut": 6.0,
             "neuron": [
                 5,
-                10
+                10,
+                20
             ],
             "axis_neuron": 12,
             "seed": 25875,
