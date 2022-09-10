@@ -1,0 +1,32 @@
+units metal
+atom_style atomic
+boundary p p p
+read_data water.lammps-data
+pair_style deepmd ../../frozen_model_compressed.pb
+pair_coeff * *
+
+timestep 0.0005
+
+group Oatoms type 1
+group Hatoms type 2
+
+fix 1 all nvt temp 300 300 0.1
+
+thermo_style custom step temp ke pe etotal press vol
+thermo 10
+thermo_modify format line "%d %.6e %.6e %.6e %.6e %.6e %.6e %.6e %.6e %.6e"
+
+dump xyzfile all xyz 10 h2o.xyz
+
+compute myRDF all rdf 10 1 1 1 2 2 2 
+fix 2 all ave/time 50 1 50 c_myRDF[*] file h2o.rdf mode vector ave running
+
+compute msd_O Oatoms msd
+compute msd_H Hatoms msd
+fix store_msd_O all vector 10 c_msd_O[4]
+fix store_msd_H all vector 10 c_msd_H[4]
+variable fitslope_O equal slope(f_store_msd_O)/6/(10*dt)
+variable fitslope_H equal slope(f_store_msd_H)/6/(10*dt)
+fix 3 all ave/time 10 1 10 c_msd_O[4] c_msd_H[4] v_fitslope_O v_fitslope_H file diffusion.txt
+
+run 5000
