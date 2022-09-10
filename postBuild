@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# install dpdata to easily load the DeePMD systems
+pip3 install dpdata
+
