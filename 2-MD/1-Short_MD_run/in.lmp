@@ -29,4 +29,4 @@ variable fitslope_O equal slope(f_store_msd_O)/6/(10*dt)
 variable fitslope_H equal slope(f_store_msd_H)/6/(10*dt)
 fix 3 all ave/time 10 1 10 c_msd_O[4] c_msd_H[4] v_fitslope_O v_fitslope_H file diffusion.txt
 
-run 5000
+run 2000

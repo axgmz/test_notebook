@@ -9,8 +9,7 @@
             "rcut": 6.0,
             "neuron": [
                 5,
-                10,
-                20
+                10
             ],
             "axis_neuron": 12,
             "seed": 25875,
@@ -18,7 +17,6 @@
         },
         "fitting_net": {
             "neuron": [
-                30,
                 30,
                 30
             ],
@@ -30,7 +28,7 @@
     },
     "learning_rate": {
         "start_lr": 0.002,
-        "decay_steps": 500,
+        "decay_steps": 100,
         "_comment": "that's all"
     },
     "loss": {
@@ -43,13 +41,13 @@
         "_comment": " that's all"
     },
     "training": {
-        "stop_batch": 5000,
+        "stop_batch": 2500,
         "seed": 25875,
         "_comment": "that's all",
         "disp_file": "lcurve.out",
         "disp_freq": 50,
         "numb_test": 5,
-        "save_freq": 50,
+        "save_freq": 2500,
         "save_ckpt": "model.ckpt",
         "disp_training": true,
         "time_training": true,
