@@ -18,7 +18,7 @@ thermo_modify format line "%d %.6e %.6e %.6e %.6e %.6e %.6e %.6e %.6e %.6e"
 
 dump xyzfile all xyz 10 h2o.xyz
 
-compute myRDF all rdf 10 1 1 1 2 2 2 
+compute myRDF all rdf 100 1 1 1 2 2 2 
 fix 2 all ave/time 50 1 50 c_myRDF[*] file h2o.rdf mode vector ave running
 
 compute msd_O Oatoms msd
