@@ -11,3 +11,5 @@ dependencies:
   - deepmd-kit=*=*cpu
   - libdeepmd=*=*cpu
   - lammps
+  - mdanalysis
+  - nglview
